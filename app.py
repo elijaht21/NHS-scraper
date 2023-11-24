@@ -1,26 +1,11 @@
 import streamlit as st
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.common.exceptions import NoSuchElementException
 import pandas as pd
 
-
-
-@st.cache_resource
-def scrape_jobs(position, location, miles, template, pages=2):
-    def get_driver():
-
-        return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-
-    options = Options()
-    options.add_argument('--disable-gpu')
-    options.add_argument('--headless')
-
-    driver = get_driver()
-   
+def scrape_jobs(position, location, miles, template, pages=5):
+    driver = webdriver.Chrome()
 
     titles = []
     companies = []
